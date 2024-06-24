@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:newapp/features/authentication/screens/signup.widgets/verify_email.dart';
 import 'package:newapp/utils/helpers/helper_functions.dart';
 
 import '../../../../utils/constants/colors.dart';
@@ -78,14 +80,14 @@ class TSignupForm extends StatelessWidget {
           const TTermsAndConditions(),
           const SizedBox(height: TSizes.spaceBtwInputFields),
 
-          /// Iniciar Sesion
+          /// Boton de Iniciar Sesion
           SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                  onPressed: () {}, child: const Text(TTexts.createAccount)))
+                  onPressed: () => Get.to(() => const VerifyEmailScreen()),
+                  child: const Text(TTexts.createAccount)))
         ],
       ),
     );
   }
 }
-

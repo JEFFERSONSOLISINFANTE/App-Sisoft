@@ -15,6 +15,10 @@ class TImages {
     static const String onBoardingImage3 = "assets/images/on_boarding_images/giphy3.gif";
 
 
+    // -- Animations Images
+    static const String verifyIllustration = "assets/images/animations/emailverify.gif";
+
+
 }
 
 
