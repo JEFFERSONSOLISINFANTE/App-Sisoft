@@ -26,7 +26,10 @@ class TImages {
     static const String mantenimientoIcon = "assets/icons/categories/mantenimiento.png";
     static const String impresoraIcon = "assets/icons/categories/impresora.png";
 
-
+    // -- Banners
+    static const String banner1 = "assets/images/banners/banner1.png";
+    static const String banner2 = "assets/images/banners/banner2.jpeg";
+    static const String banner3 = "assets/images/banners/banner3.jpeg";
 
 
 }

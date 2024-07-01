@@ -1,3 +1,5 @@
+import 'package:carousel_slider/carousel_options.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -17,6 +19,7 @@ import '../../../../common/widgets.login_signup/custom_shapes/containers/primary
 import '../../../../common/widgets.login_signup/custom_shapes/containers/search_container.dart';
 import '../../../../common/widgets.login_signup/custom_shapes/curved_edges/curved_edges_widget.dart';
 import '../../../../common/widgets.login_signup/image_text_widgets/vertical_image_text.dart';
+import '../../../../common/widgets.login_signup/images/rounded_image.dart';
 import '../../../../common/widgets.login_signup/products.cart/cart_menu_icon.dart';
 import '../../../../common/widgets.login_signup/texts/section_heading.dart';
 import '../../../../utils/constants/text_strings.dart';
@@ -26,45 +29,75 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
-            TPrimaryHeaderContainer(
-                child: Column(
-              children: [
-                ///Barra Principal
-                THomeAppBar(),
-                SizedBox(height: TSizes.spaceBtwSections),
+            const TPrimaryHeaderContainer(
+              child: Column(
+                children: [
+                  ///Barra Principal
+                  THomeAppBar(),
+                  SizedBox(height: TSizes.spaceBtwSections),
 
-                ///Barra de Busqueda
-                TSearchContainer(text: 'Buscar'),
-                SizedBox(height: TSizes.spaceBtwSections),
+                  ///Barra de Busqueda
+                  TSearchContainer(text: 'Buscar'),
+                  SizedBox(height: TSizes.spaceBtwSections),
 
-                ///Categorias
-                Padding(
-                  padding: EdgeInsets.only(left: TSizes.defaultSpace),
-                  child: Column(
-                    children: [
-                      ///Titulo
-                      TSectionHeading(
-                          title: 'Categorias Populares',
-                          showActionButton: false,
-                          textColor: TColors.white),
-                      SizedBox(height: TSizes.spaceBtwItems),
+                  ///Categorias
+                  Padding(
+                    padding: EdgeInsets.only(left: TSizes.defaultSpace),
+                    child: Column(
+                      children: [
+                        ///Titulo
+                        TSectionHeading(
+                            title: 'Categorias Populares',
+                            showActionButton: false,
+                            textColor: TColors.white),
+                        SizedBox(height: TSizes.spaceBtwItems),
 
-                      ///Categorias
-                      THomeCategories(),
+                        ///Categorias
+                        THomeCategories(),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+
+            ///Cuerpo del home
+            Padding(
+              padding: const EdgeInsets.all(TSizes.defaultSpace),
+              child: Column(
+                children: [
+                  CarouselSlider(
+                    options: CarouselOptions(
+                      viewportFraction: 1,
+                    ),
+                    items: const[
+                      TRoundedImage(imageUrl: TImages.banner1),
+                      TRoundedImage(imageUrl: TImages.banner2),
+                      TRoundedImage(imageUrl: TImages.banner3),
                     ],
                   ),
-                )
-              ],
-            )),
+                  const SizedBox(height: TSizes.spaceBtwItems),
+                  Row(
+                    children: [
+                      for(int i = 0; i < 3; i++)
+                      const TCircularContainer(
+                        width: 20,
+                        height: 20,
+                        backgroundColor: Colors.green,
+                      ),
+                    ],
+                  ),
+                ],
+              )
+            )
           ],
         ),
       ),
     );
   }
 }
-
 
