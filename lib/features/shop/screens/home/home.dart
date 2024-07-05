@@ -2,12 +2,13 @@ import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:newapp/common/widgets.login_signup/appbar/appbar.dart';
 import 'package:newapp/common/widgets.login_signup/custom_shapes/curved_edges/curved_edges.dart';
+import 'package:newapp/common/widgets.login_signup/products/product_cards/product_card_vertical.dart';
 import 'package:newapp/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:newapp/features/shop/screens/home/widgets/home_categories.dart';
+import 'package:newapp/features/shop/screens/home/widgets/promo_slider.dart';
 import 'package:newapp/utils/constants/colors.dart';
 import 'package:newapp/utils/constants/image_strings.dart';
 import 'package:newapp/utils/constants/sizes.dart';
@@ -20,7 +21,7 @@ import '../../../../common/widgets.login_signup/custom_shapes/containers/search_
 import '../../../../common/widgets.login_signup/custom_shapes/curved_edges/curved_edges_widget.dart';
 import '../../../../common/widgets.login_signup/image_text_widgets/vertical_image_text.dart';
 import '../../../../common/widgets.login_signup/images/rounded_image.dart';
-import '../../../../common/widgets.login_signup/products.cart/cart_menu_icon.dart';
+
 import '../../../../common/widgets.login_signup/texts/section_heading.dart';
 import '../../../../utils/constants/text_strings.dart';
 
@@ -33,7 +34,7 @@ class HomeScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const TPrimaryHeaderContainer(
+            TPrimaryHeaderContainer(
               child: Column(
                 children: [
                   ///Barra Principal
@@ -70,29 +71,26 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.all(TSizes.defaultSpace),
               child: Column(
                 children: [
-                  CarouselSlider(
-                    options: CarouselOptions(
-                      viewportFraction: 1,
-                    ),
-                    items: const[
-                      TRoundedImage(imageUrl: TImages.banner1),
-                      TRoundedImage(imageUrl: TImages.banner2),
-                      TRoundedImage(imageUrl: TImages.banner3),
-                    ],
+                  const TPromoSlider(
+                    banners: [TImages.banner1, TImages.banner2, TImages.banner3],
                   ),
-                  const SizedBox(height: TSizes.spaceBtwItems),
-                  Row(
-                    children: [
-                      for(int i = 0; i < 3; i++)
-                      const TCircularContainer(
-                        width: 20,
-                        height: 20,
-                        backgroundColor: Colors.green,
+                  const SizedBox(height: TSizes.spaceBtwSections),
+
+                  GridView.builder(
+                    itemCount: 4,
+                      shrinkWrap: true,
+                      padding: EdgeInsets.zero,
+                      physics: const NeverScrollableScrollPhysics(),
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                      mainAxisSpacing: TSizes.gridViewSpacing,
+                      crossAxisSpacing: TSizes.gridViewSpacing,
+                      mainAxisExtent: 288,
                       ),
-                    ],
+                      itemBuilder: (_, index) => const TProductCardVertical(),
                   ),
                 ],
-              )
+              ),
             )
           ],
         ),
@@ -100,4 +98,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
