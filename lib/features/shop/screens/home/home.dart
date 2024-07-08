@@ -1,6 +1,5 @@
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:newapp/common/widgets.login_signup/appbar/appbar.dart';
@@ -22,6 +21,7 @@ import '../../../../common/widgets.login_signup/custom_shapes/curved_edges/curve
 import '../../../../common/widgets.login_signup/image_text_widgets/vertical_image_text.dart';
 import '../../../../common/widgets.login_signup/images/rounded_image.dart';
 
+import '../../../../common/widgets.login_signup/layouts/grid_layout.dart';
 import '../../../../common/widgets.login_signup/texts/section_heading.dart';
 import '../../../../utils/constants/text_strings.dart';
 
@@ -34,7 +34,7 @@ class HomeScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            TPrimaryHeaderContainer(
+            const TPrimaryHeaderContainer(
               child: Column(
                 children: [
                   ///Barra Principal
@@ -72,23 +72,18 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 children: [
                   const TPromoSlider(
-                    banners: [TImages.banner1, TImages.banner2, TImages.banner3],
+                    banners: [
+                      TImages.banner1,
+                      TImages.banner2,
+                      TImages.banner3
+                    ],
                   ),
                   const SizedBox(height: TSizes.spaceBtwSections),
-
-                  GridView.builder(
-                    itemCount: 4,
-                      shrinkWrap: true,
-                      padding: EdgeInsets.zero,
-                      physics: const NeverScrollableScrollPhysics(),
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                      mainAxisSpacing: TSizes.gridViewSpacing,
-                      crossAxisSpacing: TSizes.gridViewSpacing,
-                      mainAxisExtent: 288,
-                      ),
-                      itemBuilder: (_, index) => const TProductCardVertical(),
-                  ),
+                  TSectionHeading(title: 'Productos Populares', onPressed: (){}),
+                  const SizedBox(height: TSizes.spaceBtwItems),
+                  TGridLayout(
+                      itemCount: 2,
+                      itemBuilder: (_, index) => const TProductCardVertical()),
                 ],
               ),
             )
