@@ -12,7 +12,6 @@ import 'package:newapp/utils/helpers/helper_functions.dart';
 
 import '../../icons/circular_icon.dart';
 import '../../layouts/product_price_text.dart';
-import '../../texts/t_brand_title_text.dart';
 
 class TProductCardVertical extends StatelessWidget {
   const TProductCardVertical({super.key});
@@ -85,6 +84,7 @@ class TProductCardVertical extends StatelessWidget {
               ),
             ),
             const Spacer(),
+
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

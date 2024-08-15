@@ -12,11 +12,7 @@ import 'package:newapp/utils/constants/sizes.dart';
 import 'package:newapp/utils/helpers/helper_functions.dart';
 
 import '../../../../common/widgets.login_signup/appbar/tabbar.dart';
-import '../../../../common/widgets.login_signup/brands/brand_show_case.dart';
-import '../../../../common/widgets.login_signup/images/t_circular_image.dart';
-import '../../../../common/widgets.login_signup/texts/t_brand_title_text_with_verified_icon.dart';
 import '../../../../utils/constants/colors.dart';
-import '../../../../utils/constants/image_strings.dart';
 
 class StoreScreen extends StatelessWidget {
   const StoreScreen({super.key});

@@ -21,6 +21,7 @@ class THomeCategories extends StatelessWidget {
               image: TImages.pcIcon,
               title: 'Computadoras',
               onTap: () {},
+
             );
           }),
     );

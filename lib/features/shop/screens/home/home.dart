@@ -1,9 +1,4 @@
-import 'package:carousel_slider/carousel_options.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
-import 'package:newapp/common/widgets.login_signup/appbar/appbar.dart';
-import 'package:newapp/common/widgets.login_signup/custom_shapes/curved_edges/curved_edges.dart';
 import 'package:newapp/common/widgets.login_signup/products/product_cards/product_card_vertical.dart';
 import 'package:newapp/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:newapp/features/shop/screens/home/widgets/home_categories.dart';
@@ -11,19 +6,12 @@ import 'package:newapp/features/shop/screens/home/widgets/promo_slider.dart';
 import 'package:newapp/utils/constants/colors.dart';
 import 'package:newapp/utils/constants/image_strings.dart';
 import 'package:newapp/utils/constants/sizes.dart';
-import 'package:newapp/utils/device/device_utility.dart';
-import 'package:newapp/utils/helpers/helper_functions.dart';
 
-import '../../../../common/widgets.login_signup/custom_shapes/containers/circular_container.dart';
 import '../../../../common/widgets.login_signup/custom_shapes/containers/primary_header_container.dart';
 import '../../../../common/widgets.login_signup/custom_shapes/containers/search_container.dart';
-import '../../../../common/widgets.login_signup/custom_shapes/curved_edges/curved_edges_widget.dart';
-import '../../../../common/widgets.login_signup/image_text_widgets/vertical_image_text.dart';
-import '../../../../common/widgets.login_signup/images/rounded_image.dart';
 
 import '../../../../common/widgets.login_signup/layouts/grid_layout.dart';
 import '../../../../common/widgets.login_signup/texts/section_heading.dart';
-import '../../../../utils/constants/text_strings.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -61,9 +49,11 @@ class HomeScreen extends StatelessWidget {
                         THomeCategories(),
                       ],
                     ),
-                  )
+                  ),
+                  SizedBox(height: TSizes.spaceBtwSections)
                 ],
               ),
+
             ),
 
             ///Cuerpo del home
