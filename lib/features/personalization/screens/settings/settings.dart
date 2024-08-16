@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:newapp/common/widgets.login_signup/appbar/appbar.dart';
 import 'package:newapp/common/widgets.login_signup/custom_shapes/containers/primary_header_container.dart';
 import 'package:newapp/common/widgets.login_signup/list_tiles/settings_menu.dart';
 import 'package:newapp/common/widgets.login_signup/texts/section_heading.dart';
+import 'package:newapp/features/personalization/screens/profile/profile.dart';
 import 'package:newapp/utils/constants/colors.dart';
 import 'package:newapp/utils/constants/sizes.dart';
 import '../../../../common/widgets.login_signup/list_tiles/user_profile.dart';
@@ -32,7 +34,7 @@ class SettingsScreen extends StatelessWidget {
                   ),
 
                   ///Usuario
-                  const TUserProfileTitle(),
+                  TUserProfileTitle(onPressed: () => Get.to(() => const ProfileScreen())),
                   const SizedBox(height: TSizes.spaceBtwSections),
                 ],
               ),

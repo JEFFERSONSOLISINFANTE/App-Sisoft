@@ -18,6 +18,10 @@ class TImages {
     // -- Imagenes gif
     static const String verifyIllustration = "assets/images/animations/emailverify.gif";
 
+    // -- Imagenes de perfil
+    static const String perfil = "assets/icons/categories/perfil.png";
+
+
     // -- Iconos
     static const String pcIcon = "assets/icons/categories/pc.png";
     static const String laptopIcon = "assets/icons/categories/laptop.png";

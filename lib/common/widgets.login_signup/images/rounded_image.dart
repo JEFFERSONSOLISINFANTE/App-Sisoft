@@ -38,11 +38,19 @@ class TRoundedImage extends StatelessWidget {
         width: width,
         height: height,
         padding: padding,
-        decoration:
-        BoxDecoration(border: border,color: backgroundColor, borderRadius: BorderRadius.circular(borderRadius)),
+        decoration: BoxDecoration(
+            border: border,
+            color: backgroundColor,
+            borderRadius: BorderRadius.circular(borderRadius)),
         child: ClipRRect(
-            borderRadius: applyImageRadius ? BorderRadius.circular(borderRadius) : BorderRadius.zero,
-            child: Image(fit: fit, image: isNetworkImage ? NetworkImage(imageUrl) : AssetImage(imageUrl) as ImageProvider)),
+            borderRadius: applyImageRadius
+                ? BorderRadius.circular(borderRadius)
+                : BorderRadius.zero,
+            child: Image(
+                fit: fit,
+                image: isNetworkImage
+                    ? NetworkImage(imageUrl)
+                    : AssetImage(imageUrl) as ImageProvider)),
       ),
     );
   }

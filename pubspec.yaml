@@ -17,12 +17,11 @@ dependencies:
 
     #UTILITY PACKAGE
   http: ^1.1.0
-  intl: ^0.18.1
+  intl: ^0.19.0
   logger: ^2.0.1
   url_launcher: ^6.1.12
   flutter_native_splash: ^2.4.0
   smooth_page_indicator: ^1.1.0
-  carousel_slider: ^4.2.1
 
 
     #ICONS
@@ -36,7 +35,9 @@ dependencies:
 
 
   #PRODUCT SPECIFIC
-
+  readmore: ^3.0.0
+  carousel_slider: ^5.0.0
+  flutter_rating_bar: ^4.0.1
 
 
   #-------------------- ./ PACKAGES END -------------------#
@@ -45,7 +46,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^3.0.0
+  flutter_lints: ^4.0.0
 
 
 flutter:
