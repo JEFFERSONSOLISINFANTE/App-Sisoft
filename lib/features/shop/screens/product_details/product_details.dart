@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:newapp/common/widgets.login_signup/texts/section_heading.dart';
 import 'package:newapp/features/shop/screens/product_details/widgets/bottom_add_wsp.dart';
@@ -6,6 +7,7 @@ import 'package:newapp/features/shop/screens/product_details/widgets/product_att
 import 'package:newapp/features/shop/screens/product_details/widgets/product_data.dart';
 import 'package:newapp/features/shop/screens/product_details/widgets/product_detail_image_slider.dart';
 import 'package:newapp/features/shop/screens/product_details/widgets/rating_share.dart';
+import 'package:newapp/features/shop/screens/product_reviews/product_reviews.dart';
 import 'package:newapp/utils/constants/sizes.dart';
 import 'package:newapp/utils/helpers/helper_functions.dart';
 import 'package:readmore/readmore.dart';
@@ -70,7 +72,7 @@ class ProductDetails extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const TSectionHeading(title: 'Reseñas(19)',showActionButton: false),
-                      IconButton(onPressed: (){}, icon: const Icon(Iconsax.arrow_right_3, size: 18))
+                      IconButton(onPressed: () => Get.to(() => const ProductReviewScreen()) , icon: const Icon(Iconsax.arrow_right_3, size: 18))
                     ],
                   ),
                   const SizedBox(height: TSizes.spaceBtwItems),

@@ -5,7 +5,10 @@ import 'package:newapp/common/widgets.login_signup/appbar/appbar.dart';
 import 'package:newapp/common/widgets.login_signup/custom_shapes/containers/primary_header_container.dart';
 import 'package:newapp/common/widgets.login_signup/list_tiles/settings_menu.dart';
 import 'package:newapp/common/widgets.login_signup/texts/section_heading.dart';
+import 'package:newapp/features/personalization/screens/address/address.dart';
 import 'package:newapp/features/personalization/screens/profile/profile.dart';
+import 'package:newapp/features/shop/screens/order/order.dart';
+import 'package:newapp/features/shop/screens/order/widgets/order_list.dart';
 import 'package:newapp/utils/constants/colors.dart';
 import 'package:newapp/utils/constants/sizes.dart';
 import '../../../../common/widgets.login_signup/list_tiles/user_profile.dart';
@@ -50,19 +53,19 @@ class SettingsScreen extends StatelessWidget {
                       title: "Ajustes de Cuenta", showActionButton: false),
                   const SizedBox(height: TSizes.spaceBtwSections),
 
-                  const TSettingMenu(
+                  TSettingMenu(
                       icon: Iconsax.safe_home,
                       title: "Mi direccion",
-                      subtitle: ""),
+                      subtitle: "", onTap: () => Get.to (() => const UserAddressScreen()),),
                   const TSettingMenu(
                       icon: Iconsax.shopping_cart,
                       title: "Mi Carrito",
                       subtitle:
                           "Añadir, Eliminar articulos y Añadirlos al WhatsApp"),
-                  const TSettingMenu(
+                  TSettingMenu(
                       icon: Iconsax.bag_tick,
                       title: "Mis Articulos",
-                      subtitle: "Articulos comprados"),
+                      subtitle: "Articulos comprados", onTap: () => Get.to(() => const OrderScreen())),
                   const TSettingMenu(
                       icon: Iconsax.bank,
                       title: "Saldo",

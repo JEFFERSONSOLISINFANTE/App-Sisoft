@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:newapp/features/shop/screens/sub_categories/sub_categories.dart';
 
 import '../../../../../common/widgets.login_signup/image_text_widgets/vertical_image_text.dart';
 import '../../../../../utils/constants/image_strings.dart';
@@ -20,7 +22,7 @@ class THomeCategories extends StatelessWidget {
             return TVerticalImageText(
               image: TImages.pcIcon,
               title: 'Computadoras',
-              onTap: () {},
+              onTap: () => Get.to (() => const SubCategoriesScreen()),
 
             );
           }),

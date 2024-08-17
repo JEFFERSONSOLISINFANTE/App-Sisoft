@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:newapp/common/widgets.login_signup/products/product_cards/product_card_vertical.dart';
+import 'package:newapp/features/shop/screens/all_products/all_products.dart';
 import 'package:newapp/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:newapp/features/shop/screens/home/widgets/home_categories.dart';
 import 'package:newapp/features/shop/screens/home/widgets/promo_slider.dart';
@@ -42,7 +44,7 @@ class HomeScreen extends StatelessWidget {
                         TSectionHeading(
                             title: 'Categorias Populares',
                             showActionButton: false,
-                            textColor: TColors.white),
+                            textColor: TColors.white,),
                         SizedBox(height: TSizes.spaceBtwItems),
 
                         ///Categorias
@@ -69,7 +71,7 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: TSizes.spaceBtwSections),
-                  TSectionHeading(title: 'Productos Populares', onPressed: (){}),
+                  TSectionHeading(title: 'Productos Populares', onPressed: () => Get.to(() => const AllProducts())),
                   const SizedBox(height: TSizes.spaceBtwItems),
                   TGridLayout(
                       itemCount: 2,

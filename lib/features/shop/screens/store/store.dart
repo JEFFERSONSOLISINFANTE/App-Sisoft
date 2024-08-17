@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:newapp/common/widgets.login_signup/appbar/appbar.dart';
 import 'package:newapp/common/widgets.login_signup/custom_shapes/containers/search_container.dart';
 import 'package:newapp/common/widgets.login_signup/layouts/grid_layout.dart';
@@ -6,6 +7,7 @@ import 'package:newapp/common/widgets.login_signup/products/cart/cart_menu_icon.
 
 import 'package:newapp/common/widgets.login_signup/texts/section_heading.dart';
 import 'package:newapp/common/widgets.login_signup/brands/brand_card.dart';
+import 'package:newapp/features/shop/screens/brand/all_brands.dart';
 import 'package:newapp/features/shop/screens/store/widgets/category_tab.dart';
 
 import 'package:newapp/utils/constants/sizes.dart';
@@ -55,7 +57,7 @@ class StoreScreen extends StatelessWidget {
 
                       /// Marcas Populares
                       TSectionHeading(
-                          title: 'Marcas Populares', onPressed: () {}),
+                          title: 'Marcas Populares', onPressed: () => Get.to (() => const AllBrandsScreen())),
                       const SizedBox(height: TSizes.spaceBtwItems / 1.5),
 
                       TGridLayout(
