@@ -1,14 +1,23 @@
 class TValidator {
+
+  static String? validateEmptyText(String? fieldName, String? value){
+    if (value == null || value.isEmpty){
+      return '$fieldName se necesita.';
+    }
+    return null;
+  }
+
+
   static String? validateEmail(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Email is required.';
+      return 'Se necesita un correo.';
     }
 
     // Regular expression for email validation
-    final emailRegExp = RegExp(r'^[\w-.]+@([\w− ]+.)+ [\w− ]{2,4}$');
+    final emailRegExp = RegExp(r'^[\w-.]+@([\w− ]+.)+[\w− ]{2,4}$');
 
     if (!emailRegExp.hasMatch(value)) {
-      return 'Correo Electronico no valido';
+      return 'Correo Electronico no valido.';
     }
 
     return null;
@@ -21,7 +30,7 @@ class TValidator {
 
     // Check for minimum password length
     if (value.length < 6) {
-      return 'La contraseña debe tener al menos 6 digitos';
+      return 'La contraseña debe tener al menos 6 digitos.';
     }
     // Check for uppercase letters
     if (!value.contains(RegExp(r'[A-Z]'))) {
@@ -46,7 +55,7 @@ class TValidator {
     final phoneRegExp = RegExp(r'^\d{9}$');
 
     if (!phoneRegExp.hasMatch(value)) {
-      return 'Número de teléfono invalido, tiene que tener 9 digitos';
+      return 'Número de teléfono invalido, tiene que tener 9 digitos.';
     }
     return null;
   }

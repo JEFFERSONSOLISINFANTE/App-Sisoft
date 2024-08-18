@@ -25,21 +25,23 @@ class LoginScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: TSpacingStyle.paddingWithAppBarHeight,
-          child: Column(
-            children: [
-              /// Logo, Tittle & Sub-Title
-              const TLoginHeader(),
-
-              ///Form
-              const TLoginForm(),
-
-              ///Divider
-              TFormDivider(dividerText: TTexts.orSignInWith.capitalize!),
-              const SizedBox(height: TSizes.spaceBtwSections),
-
-              ///Footer
-              const TSocialButtons()
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                /// Logo, Tittle & Sub-Title
+                const TLoginHeader(),
+            
+                ///Form
+                const TLoginForm(),
+            
+                ///Divider
+                TFormDivider(dividerText: TTexts.orSignInWith.capitalize!),
+                const SizedBox(height: TSizes.spaceBtwSections),
+            
+                ///Footer
+                const TSocialButtons()
+              ],
+            ),
           ),
         ),
       ),

@@ -3,7 +3,6 @@ import 'package:newapp/common/styles/spacing_styles.dart';
 
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/constants/text_strings.dart';
-import '../../../utils/helpers/helper_functions.dart';
 
 class SuccessScreen extends StatelessWidget {
   const SuccessScreen(
@@ -25,10 +24,7 @@ class SuccessScreen extends StatelessWidget {
           child: Column(
             children: [
               ///Imagen
-              Image(
-                image: AssetImage(image),
-                width: THelperFunctions.screenWidth() * 0.6,
-              ),
+              Image.asset(image, width: MediaQuery.of(context).size.width * 0.6),
               const SizedBox(height: TSizes.spaceBtwSections),
 
               ///Titulo
@@ -45,8 +41,8 @@ class SuccessScreen extends StatelessWidget {
               SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                      onPressed: onPressed, child: const Text(TTexts.tContinue))),
-
+                      onPressed: onPressed,
+                      child: const Text(TTexts.tContinue))),
             ],
           ),
         ),

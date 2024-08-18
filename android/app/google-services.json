@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "642120806959",
+    "project_id": "sisoft-app",
+    "storage_bucket": "sisoft-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:642120806959:android:c4b13406261183c5d88cda",
+        "android_client_info": {
+          "package_name": "com.example.newapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "642120806959-uj96fnsg777b9kspr9ld1n8treq1jfl5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.newapp",
+            "certificate_hash": "4516bec53d503cfad37806beceba16e59439d999"
+          }
+        },
+        {
+          "client_id": "642120806959-i5k3avvkvallkth9eg29qh69dnb50p85.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAquuga9mHCIYvEOIkJSqkVbwLl4263B0c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "642120806959-i5k3avvkvallkth9eg29qh69dnb50p85.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "642120806959-d0os212nc634q2jgkvnpk2ug7te1h6k0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.newapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
