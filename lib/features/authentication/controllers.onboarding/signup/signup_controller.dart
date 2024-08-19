@@ -61,10 +61,10 @@ class SignupController extends GetxController {
 
       /// Save Authenticate
       final newUser = UserModel(
-          id: '',
-          firstName: userCredential.user!.uid,
-          lastName: firstName.text.trim(),
-          username: lastName.text.trim(),
+          id: userCredential.user!.uid,
+          firstName: firstName.text.trim(),
+          lastName: lastName.text.trim(),
+          username: username.text.trim(),
           email: email.text.trim(),
           phoneNumber: phoneNumber.text.trim(),
           profilePicture: '');

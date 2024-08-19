@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import '../../../utils/formatters/formatter.dart';
 
 class UserModel {
@@ -36,7 +38,7 @@ class UserModel {
     String firstName = nameParts[0].toLowerCase();
     String lastName = nameParts.length > 1 ? nameParts[1].toLowerCase() : "";
     String camelCaseUsername = "$firstName $lastName";
-    String usernameWithPrefix = "psx $camelCaseUsername";
+    String usernameWithPrefix = "psx_$camelCaseUsername";
     return usernameWithPrefix;
   }
 
@@ -58,21 +60,24 @@ class UserModel {
       'Usuario': username,
       "Correo Electronico": email,
       'Telefono': phoneNumber,
-      'Foto de Perfil': profilePicture,
+      'Foto_de_Perfil': profilePicture,
     };
   }
 
-  /*factory UserModel.fromSnapshot(DocumentSnapshot<Map<String, dynamic>> document) {
-  if (document.data() != null) {
-    final data = document.data()!;
-    return UserModel(
-        id: document.id,
-        firstName: data['FirstName'] ?? '',
-        lastName: data['LastName'] ?? '',
-        username: data['Username'] ?? '',
-        email: data['Email'] ?? '',
-        phoneNumber: data['Phone Number'] ?? '',
-        profilePicture: data['Profile Picture'] ?? ''
-    );
-    } */
+  factory UserModel.fromSnapshot(
+      DocumentSnapshot<Map<String, dynamic>> document) {
+    if (document.data() != null) {
+      final data = document.data()!;
+      return UserModel(
+          id: document.id,
+          firstName: data['Nombres'] ?? '',
+          lastName: data['Apellidos'] ?? '',
+          username: data['Usuario'] ?? '',
+          email: data['Correo Electronico'] ?? '',
+          phoneNumber: data['Telefono'] ?? '',
+          profilePicture: data['Foto_de_Perfil'] ?? '');
+    } else {
+      return UserModel.empty();
+    }
+  }
 }

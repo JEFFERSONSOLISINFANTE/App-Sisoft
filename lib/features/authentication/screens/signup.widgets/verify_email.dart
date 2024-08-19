@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:newapp/data/repositories.authentication/authentication_repository.dart';
 import 'package:newapp/features/authentication/controllers.onboarding/signup/verify_email_controller.dart';
 import 'package:newapp/utils/helpers/helper_functions.dart';
-
 import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/constants/text_strings.dart';
