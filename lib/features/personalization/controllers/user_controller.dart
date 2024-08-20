@@ -1,11 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:newapp/common/widgets.login_signup/loaders/loaders.dart';
 
 import '../../../common/widgets.login_signup/connection/network_manager.dart';
-import '../../../data/repositories.authentication/authentication_repository.dart';
-import '../../../data/repositories.authentication/user/user_repository.dart';
+import '../../../data/repositories/authentication/authentication_repository.dart';
+import '../../../data/repositories/user/user_repository.dart';
 import '../../../utils/constants/image_strings.dart';
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/popups/fullscreen_loader.dart';
@@ -19,6 +20,7 @@ class UserController extends GetxController {
   final profileLoading = false.obs;
   Rx<UserModel> user = UserModel.empty().obs;
   final hidePassword = false.obs;
+  final imageUploading = false.obs;
   final verifyEmail = TextEditingController();
   final verifyPassword = TextEditingController();
   final userRepository = Get.put(UserRepository());
@@ -46,28 +48,37 @@ class UserController extends GetxController {
   /// Save user information
   Future<void> saveUserRecord(UserCredential? userCredentials) async {
     try {
-      if (userCredentials != null) {
-        final nameParts = UserModel.nameParts(userCredentials.user!.displayName ?? '');
-        final username = UserModel.generateUsername(userCredentials.user!.displayName ?? '');
+      ///Refresh user record
 
-        /// Data
-        final user = UserModel(
-          id: userCredentials.user!.uid,
-          firstName: nameParts[0],
-          lastName: nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '',
-          username: username,
-          email: userCredentials.user!.email ?? '',
-          phoneNumber: userCredentials.user!.phoneNumber ?? '',
-          profilePicture: userCredentials.user!.photoURL ?? '',
-        );
+      await fetchUserRecord();
+      if (user.value.id.isEmpty) {
+        if (userCredentials != null) {
+          final nameParts =
+              UserModel.nameParts(userCredentials.user!.displayName ?? '');
+          final username = UserModel.generateUsername(
+              userCredentials.user!.displayName ?? '');
 
-        /// Save data
-        await userRepository.saveUserRecord(user);
+          /// Data
+          final user = UserModel(
+            id: userCredentials.user!.uid,
+            firstName: nameParts[0],
+            lastName:
+                nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '',
+            username: username,
+            email: userCredentials.user!.email ?? '',
+            phoneNumber: userCredentials.user!.phoneNumber ?? '',
+            profilePicture: userCredentials.user!.photoURL ?? '',
+          );
+
+          /// Save data
+          await userRepository.saveUserRecord(user);
+        }
       }
     } catch (e) {
       TLoaders.warningSnackBar(
-        title: 'Data not saved',
-        message: 'Something went wrong while saving your information. You can try saving your data again from your profile.',
+        title: 'Los datos no se guardaron.',
+        message:
+            'Algo salio mal, vuelve a intentar guardar tus datos desde tu perfil.',
       );
     }
   }
@@ -77,7 +88,8 @@ class UserController extends GetxController {
     Get.defaultDialog(
       contentPadding: const EdgeInsets.all(TSizes.md),
       title: 'Borrar Cuenta',
-      middleText: 'Seguro que quieres borrar tu cuenta? Todos tus datos seran eliminados permanentemente.',
+      middleText:
+          'Seguro que quieres borrar tu cuenta? Todos tus datos seran eliminados permanentemente.',
       confirm: ElevatedButton(
         onPressed: () async => deleteUserAccount(),
         style: ElevatedButton.styleFrom(
@@ -90,7 +102,7 @@ class UserController extends GetxController {
         ),
       ),
       cancel: OutlinedButton(
-        child: const Text('Cancel'),
+        child: const Text('Cancelar'),
         onPressed: () => Navigator.of(Get.overlayContext!).pop(),
       ),
     );
@@ -99,11 +111,13 @@ class UserController extends GetxController {
   /// Delete user account
   void deleteUserAccount() async {
     try {
-      TFullScreenLoader.openLoadingDialog('Procesando...', TImages.verifyIllustration);
+      TFullScreenLoader.openLoadingDialog(
+          'Procesando...', TImages.waiting);
 
       /// First re-authenticate user
       final auth = AuthenticationRepository.instance;
-      final provider = auth.authUser!.providerData.map((e) => e.providerId).first;
+      final provider =
+          auth.authUser!.providerData.map((e) => e.providerId).first;
 
       if (provider == 'google.com') {
         await auth.sigInWithGoogle();
@@ -122,7 +136,8 @@ class UserController extends GetxController {
   /// Re-authenticate and delete account
   Future<void> reAuthenticateEmailAndPassword() async {
     try {
-      TFullScreenLoader.openLoadingDialog('Procesando...', TImages.verifyIllustration);
+      TFullScreenLoader.openLoadingDialog(
+          'Procesando...', TImages.waiting);
 
       /// Check Internet
       final isConnected = await NetworkManager.instance.isConnected();
@@ -136,7 +151,8 @@ class UserController extends GetxController {
         return;
       }
 
-      await AuthenticationRepository.instance.reAuthenticateWithEmailAndPassword(
+      await AuthenticationRepository.instance
+          .reAuthenticateWithEmailAndPassword(
         verifyEmail.text.trim(),
         verifyPassword.text.trim(),
       );
@@ -145,7 +161,45 @@ class UserController extends GetxController {
       Get.offAll(() => const LoginScreen());
     } catch (e) {
       TFullScreenLoader.stopLoading();
-      TLoaders.warningSnackBar(title: 'Attention!', message: e.toString());
+      TLoaders.warningSnackBar(title: '¡Atención!', message: e.toString());
     }
   }
+
+  ///Upload Profile Image
+  uploadUserProfilePicture() async {
+    try {
+      final image = await ImagePicker().pickImage(
+          source: ImageSource.gallery,
+          imageQuality: 70,
+          maxHeight: 512,
+          maxWidth: 512);
+      if (image != null) {
+        imageUploading.value = true;
+
+        ///subir la imagen
+        final imageUrl =
+            await userRepository.uploadImage('Users/Images/Profile/', image);
+
+        ///Actualizar la imagen
+        Map<String, dynamic> json = {'Foto_de_Perfil': imageUrl};
+        await userRepository.updateSingleField(json);
+
+        user.value.profilePicture = imageUrl;
+        user.refresh();
+        TLoaders.successSnackBar(
+            title: 'Felicidades',
+            message: 'Tu foto de perfil ha sido actualizada');
+      }
+    } catch (e) {
+      TLoaders.errorSnackBar(
+          title: '¡Atención!', message: 'Algo salio mal: $e');
+    } finally {
+      imageUploading.value = false;
+    }
+  }
+
+
+
+
+
 }

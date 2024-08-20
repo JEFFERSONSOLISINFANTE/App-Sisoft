@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:newapp/common/widgets.login_signup/texts/section_heading.dart';
+import 'package:newapp/features/personalization/screens/address/address.dart';
 import 'package:newapp/utils/constants/sizes.dart';
 
 class TBillingAddressSection extends StatelessWidget {
@@ -13,7 +15,7 @@ class TBillingAddressSection extends StatelessWidget {
         TSectionHeading(
             title: 'Direccion de Envio',
             buttonTitle: 'Cambiar',
-            onPressed: () {}),
+            onPressed: () => Get.to(() => const UserAddressScreen())),
         Text('Jefferson Solis', style: Theme.of(context).textTheme.bodyLarge),
         const SizedBox(height: TSizes.spaceBtwItems / 2),
 

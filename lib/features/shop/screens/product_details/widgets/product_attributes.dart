@@ -68,7 +68,7 @@ class TProductAttributes extends StatelessWidget {
 
               ///Descripcion
               const TProductTitleText(
-                  title: 'Esta wea esta re barata porque quiero xdEsta wea esta re barata porque quiero xdEsta wea esta re barata porque quiero xd',
+                  title: 'Pc de ultima generacion en oferta por inicio de clases',
                   smallSize: true,
                   maxLines: 4),
             ],
@@ -76,37 +76,8 @@ class TProductAttributes extends StatelessWidget {
         ),
         const SizedBox(height: TSizes.spaceBtwItems),
 
-        /// Atrubutos
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const TSectionHeading(title: 'Colores', showActionButton: false),
-            const SizedBox(height: TSizes.spaceBtwItems / 2),
-            Wrap(
-              spacing: 6,
-              children: [
-                TChoiceChip(text: 'Green', selected: true, onSelected: (value){}),
-                TChoiceChip(text: 'Blue', selected: false, onSelected: (value){}),
-                TChoiceChip(text: 'Yellow', selected: false, onSelected: (value){}),
-              ],
-            )
-          ],
-        ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const TSectionHeading(title: 'Tamaños', showActionButton: false),
-            const SizedBox(height: TSizes.spaceBtwItems / 2),
-           Wrap(
-             spacing: 10,
-             children: [
-               TChoiceChip(text: 'EU 34', selected: true, onSelected: (value){}),
-               TChoiceChip(text: 'EU 36', selected: false, onSelected: (value){}),
-               TChoiceChip(text: 'EU 38', selected: false, onSelected: (value){}),
-             ],
-           )
-          ],
-        ),
+        /// Atributos
+
 
 
       ],

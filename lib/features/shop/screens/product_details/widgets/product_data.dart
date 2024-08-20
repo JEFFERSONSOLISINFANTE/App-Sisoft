@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:newapp/common/widgets.login_signup/images/t_circular_image.dart';
 import 'package:newapp/common/widgets.login_signup/layouts/product_price_text.dart';
 import 'package:newapp/common/widgets.login_signup/texts/product_title_text.dart';
@@ -47,7 +46,7 @@ class TProductData extends StatelessWidget {
         const SizedBox(height: TSizes.spaceBtwItems/1.5),
 
         ///Titulo
-        const TProductTitleText(title: 'Pc negra y fea'),
+        const TProductTitleText(title: 'Pc Amd Ryzen 5700g 16gb RAM RTX3090'),
         const SizedBox(height: TSizes.spaceBtwItems/1.5),
         ///Stock
         Row(
@@ -61,12 +60,12 @@ class TProductData extends StatelessWidget {
         ///Marca
         Row(
           children: [
-            TCircularImage(image: TImages.tintaIcon,
+            TCircularImage(image: TImages.amd,
             width: 32,
               height: 32,
               overlayColor: dark ? TColors.white : TColors.dark,
             ),
-            const TBrandTitleTextWithVerifiedIcon(title: 'Amd', brandTextSize: TextSizes.medium),
+            const TBrandTitleTextWithVerifiedIcon(title: '', brandTextSize: TextSizes.medium),
           ],
         ),
 

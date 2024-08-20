@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:cached_network_image/cached_network_image.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/helpers/helper_functions.dart';
@@ -17,7 +17,7 @@ class TCircularImage extends StatelessWidget {
     this.padding = TSizes.sm,
   });
 
-  final BoxFit? fit;
+  final BoxFit fit;
   final String image;
   final bool isNetworkImage;
   final Color? overlayColor;
@@ -31,14 +31,29 @@ class TCircularImage extends StatelessWidget {
       height: height,
       padding: EdgeInsets.all(padding),
       decoration: BoxDecoration(
-        color: backgroundColor ?? (THelperFunctions.isDarkMode(context) ? TColors.black : TColors.white),
+        color: backgroundColor ??
+            (THelperFunctions.isDarkMode(context)
+                ? TColors.black
+                : TColors.white),
         borderRadius: BorderRadius.circular(100),
       ),
-      child: Center(
-        child: Image(
-          fit: fit,
-          image: isNetworkImage ? NetworkImage(image) : AssetImage(image) as ImageProvider,
-          color: overlayColor
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(100),
+        child: Center(
+          child: isNetworkImage
+              ? CachedNetworkImage(
+            fit: fit,
+            color: overlayColor,
+            imageUrl: image,
+            progressIndicatorBuilder: (context, url, downloadProgress) =>
+            const CircularProgressIndicator(), // Ajustar según sea necesario
+            errorWidget: (context, url, error) => const Icon(Icons.error),
+          )
+              : Image.asset(
+            image,
+            fit: fit,
+            color: overlayColor,
+          ),
         ),
       ),
     );

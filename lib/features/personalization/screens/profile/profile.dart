@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:newapp/common/widgets.login_signup/appbar/appbar.dart';
 import 'package:newapp/common/widgets.login_signup/images/t_circular_image.dart';
 import 'package:newapp/common/widgets.login_signup/texts/section_heading.dart';
-import 'package:newapp/data/repositories.authentication/authentication_repository.dart';
 import 'package:newapp/features/personalization/screens/profile/widgets/change_name.dart';
+import 'package:newapp/features/personalization/screens/profile/widgets/change_phone_number.dart';
 import 'package:newapp/features/personalization/screens/profile/widgets/profile_menu.dart';
 import 'package:newapp/utils/constants/image_strings.dart';
 import 'package:newapp/utils/constants/sizes.dart';
+import 'package:newapp/utils/theme/custom_themes/shimmer.dart';
 
 import '../../controllers/user_controller.dart';
 
@@ -32,10 +34,17 @@ class ProfileScreen extends StatelessWidget {
                 width: double.infinity,
                 child: Column(
                   children: [
-                    const TCircularImage(
-                        image: TImages.pcIcon, width: 80, height: 80),
+                    Obx(
+                      (){
+                        final networkImage = controller.user.value.profilePicture;
+                        final image = networkImage.isNotEmpty ? networkImage : TImages.perfil;
+                        return controller.imageUploading.value ? const TShimmerEffect(width: 80, height: 80, radius: 80)
+                        : TCircularImage(
+                            image: image, width: 80, height: 80, isNetworkImage: networkImage.isNotEmpty);
+                      }
+                    ),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () => controller.uploadUserProfilePicture(),
                         child: const Text("Cambiar foto de perfil")),
                   ],
                 ),
@@ -57,7 +66,18 @@ class ProfileScreen extends StatelessWidget {
               TProfileMenu(
                   title: "Usuario",
                   value: controller.user.value.username,
-                  onPressed: () {}),
+                  icon: Iconsax.copy,
+                  onPressed: () {
+                    // Copia el ID al portapapeles
+                    Clipboard.setData(
+                        ClipboardData(text: controller.user.value.id));
+                    // Muestra un mensaje de confirmación
+                    Get.snackbar(
+                      "Copiado",
+                      "Usuario copiado al portapapeles",
+                      snackPosition: SnackPosition.BOTTOM,
+                    );
+                  }),
 
               const SizedBox(height: TSizes.spaceBtwItems),
               const Divider(),
@@ -71,7 +91,17 @@ class ProfileScreen extends StatelessWidget {
                   title: "ID",
                   value: controller.user.value.id,
                   icon: Iconsax.copy,
-                  onPressed: () {}),
+                  onPressed: () {
+                    // Copia el ID al portapapeles
+                    Clipboard.setData(
+                        ClipboardData(text: controller.user.value.id));
+                    // Muestra un mensaje de confirmación
+                    Get.snackbar(
+                      "Copiado",
+                      "ID copiado al portapapeles",
+                      snackPosition: SnackPosition.BOTTOM,
+                    );
+                  }),
               TProfileMenu(
                   title: "Correo Electronico",
                   value: controller.user.value.email,
@@ -79,7 +109,7 @@ class ProfileScreen extends StatelessWidget {
               TProfileMenu(
                   title: "Numero de Telefono",
                   value: controller.user.value.phoneNumber,
-                  onPressed: () {}),
+                  onPressed: () => Get.to(() => const TChangePhoneNumber())),
               TProfileMenu(
                   title: "Genero", value: "Masculino", onPressed: () {}),
               TProfileMenu(

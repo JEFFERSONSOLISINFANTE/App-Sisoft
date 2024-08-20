@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:newapp/common/widgets.login_signup/images/rounded_image.dart';
 import 'package:newapp/common/widgets.login_signup/layouts/product_price_text.dart';
@@ -6,6 +7,9 @@ import 'package:newapp/common/widgets.login_signup/products/product_cards/rounde
 import 'package:newapp/common/widgets.login_signup/texts/product_title_text.dart';
 import 'package:newapp/common/widgets.login_signup/texts/t_brand_title_text.dart';
 import 'package:newapp/common/widgets.login_signup/texts/t_brand_title_text_with_verified_icon.dart';
+import 'package:newapp/features/shop/screens/product_details/product_details.dart';
+import 'package:newapp/features/shop/screens/product_details/widgets/product_attributes.dart';
+import 'package:newapp/features/shop/screens/product_details/widgets/product_data.dart';
 import 'package:newapp/utils/constants/image_strings.dart';
 
 import '../../../../utils/constants/colors.dart';
@@ -35,11 +39,11 @@ class TProductCardHorizontal extends StatelessWidget {
             backgroundColor: dark ? TColors.dark : TColors.light,
             child: Stack(
               children: [
-                const SizedBox(
+                SizedBox(
                   height: 120,
                   width: 120,
                   child: TRoundedImage(
-                      imageUrl: TImages.camaraIcon, applyImageRadius: true),
+                      imageUrl: TImages.pc, applyImageRadius: true, onPressed: () => Get.to(const ProductDetails())),
                 ),
                 Positioned(
                   top: 12,

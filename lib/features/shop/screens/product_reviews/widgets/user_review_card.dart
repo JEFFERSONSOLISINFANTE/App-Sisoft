@@ -21,7 +21,7 @@ class UserReviewCard extends StatelessWidget {
           children: [
             Row(
               children: [
-                const CircleAvatar(backgroundImage: AssetImage(TImages.google)),
+                const CircleAvatar(backgroundImage: AssetImage(TImages.perfil)),
                 const SizedBox(height: TSizes.spaceBtwItems),
                 Text(
                   "John Doe",
@@ -44,7 +44,7 @@ class UserReviewCard extends StatelessWidget {
         ),
         const SizedBox(height: TSizes.spaceBtwItems),
         const ReadMoreText(
-          'la chucha de la wea la chucha de la wea pedrito la concha de tu madre backea weon tira silencio o para tiempo, usa tus botas concha de tu madre weoooooon',
+          'Excelente producto lo recomiendo a todo el mundo que tenga la disposicion de comprarlo.',
           trimLines: 1,
           trimExpandedText: "Ver menos",
           trimCollapsedText: "Ver más",
@@ -78,10 +78,10 @@ class UserReviewCard extends StatelessWidget {
                 ),
                 const SizedBox(height: TSizes.spaceBtwItems),
                 const ReadMoreText(
-                  'la chucha de la wea la chucha de la wea pedrito la concha de tu madre backea weon tira silencio o para tiempo, usa tus botas concha de tu madre weoooooon',
+                  'Gracias por tus comentarias, estamos en busqueda un constante crecimiento y saber tus opiniones es importante para nosotros.',
                   trimLines: 1,
-                  trimExpandedText: "Ver menos",
-                  trimCollapsedText: "Ver más",
+                  trimExpandedText: "Ver menos.",
+                  trimCollapsedText: "Ver más.",
                   trimMode: TrimMode.Line,
                   moreStyle: TextStyle(
                       fontSize: 14,

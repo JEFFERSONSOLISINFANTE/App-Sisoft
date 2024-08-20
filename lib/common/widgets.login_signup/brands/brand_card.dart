@@ -32,7 +32,7 @@ class TBrandCard extends StatelessWidget {
             /// Iconos
             Flexible(
               child: TCircularImage(
-                  image: TImages.pcIcon,
+                  image: TImages.amd,
                   isNetworkImage: false,
                   backgroundColor: Colors.transparent,
                   overlayColor: isDark ? TColors.white : TColors.black),
@@ -46,7 +46,7 @@ class TBrandCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const TBrandTitleTextWithVerifiedIcon(
-                      title: 'Computadoras', brandTextSize: TextSizes.large),
+                      title: 'AMD', brandTextSize: TextSizes.large),
                   Text(
                     '25 Productos',
                     overflow: TextOverflow.ellipsis,

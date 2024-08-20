@@ -5,7 +5,7 @@ import 'package:newapp/features/personalization/controllers/user_controller.dart
 
 import '../../../../common/widgets.login_signup/connection/network_manager.dart';
 import '../../../../common/widgets.login_signup/loaders/loaders.dart';
-import '../../../../data/repositories.authentication/authentication_repository.dart';
+import '../../../../data/repositories/authentication/authentication_repository.dart';
 import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/popups/fullscreen_loader.dart';
 
@@ -33,7 +33,7 @@ class LoginController extends GetxController {
     try {
       /// Cargando
       TFullScreenLoader.openLoadingDialog(
-          'Iniciando Sesion', TImages.verifyIllustration);
+          'Iniciando Sesion', TImages.waiting);
 
       /// Verificando conexion a internet
       final isConnected = await NetworkManager.instance.isConnected();
@@ -74,7 +74,7 @@ class LoginController extends GetxController {
   Future<void> googleSignIn() async{
     try{
       ///Iniciando
-      TFullScreenLoader.openLoadingDialog('Iniciando Sesion...', TImages.verifyIllustration);
+      TFullScreenLoader.openLoadingDialog('Iniciando Sesion...', TImages.waiting);
 
       ///Verificar conexion a internet
       final isConnected = await NetworkManager.instance.isConnected();

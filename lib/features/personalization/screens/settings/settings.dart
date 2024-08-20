@@ -7,15 +7,46 @@ import 'package:newapp/common/widgets.login_signup/list_tiles/settings_menu.dart
 import 'package:newapp/common/widgets.login_signup/texts/section_heading.dart';
 import 'package:newapp/features/personalization/screens/address/address.dart';
 import 'package:newapp/features/personalization/screens/profile/profile.dart';
+import 'package:newapp/features/shop/screens/checkout/checkout.dart';
 import 'package:newapp/features/shop/screens/order/order.dart';
-import 'package:newapp/features/shop/screens/order/widgets/order_list.dart';
 import 'package:newapp/utils/constants/colors.dart';
 import 'package:newapp/utils/constants/sizes.dart';
 import '../../../../common/widgets.login_signup/list_tiles/user_profile.dart';
-import '../../../../data/repositories.authentication/authentication_repository.dart';
+import '../../../../data/repositories/authentication/authentication_repository.dart';
 
-class SettingsScreen extends StatelessWidget {
+class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
+
+  @override
+  _SettingsScreenState createState() => _SettingsScreenState();
+}
+
+class _SettingsScreenState extends State<SettingsScreen> {
+  bool _notificationsEnabled = false;
+
+  void _toggleNotifications() {
+    setState(() {
+      _notificationsEnabled = !_notificationsEnabled;
+    });
+
+    // Mostrar un cuadro de diálogo con el estado actual de las notificaciones
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(_notificationsEnabled ? 'Notificaciones Activadas' : 'Notificaciones Desactivadas'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Cerrar el diálogo
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,14 +86,14 @@ class SettingsScreen extends StatelessWidget {
                   const SizedBox(height: TSizes.spaceBtwSections),
 
                   TSettingMenu(
-                      icon: Iconsax.safe_home,
-                      title: "Mi direccion",
-                      subtitle: "", onTap: () => Get.to (() => const UserAddressScreen()),),
-                  const TSettingMenu(
+                    icon: Iconsax.safe_home,
+                    title: "Mi direccion",
+                    subtitle: "", onTap: () => Get.to (() => const UserAddressScreen()),),
+                  TSettingMenu(
                       icon: Iconsax.shopping_cart,
                       title: "Mi Carrito",
                       subtitle:
-                          "Añadir, Eliminar articulos y Añadirlos al WhatsApp"),
+                      "Añadir, Eliminar articulos y Añadirlos al WhatsApp",onTap: () => Get.to (() => const CheckoutScreen()) ),
                   TSettingMenu(
                       icon: Iconsax.bag_tick,
                       title: "Mis Articulos",
@@ -75,10 +106,11 @@ class SettingsScreen extends StatelessWidget {
                       icon: Iconsax.discount_shape,
                       title: "Mis Cupones",
                       subtitle: "Verificar sus Cupones"),
-                  const TSettingMenu(
+                  TSettingMenu(
                       icon: Iconsax.notification,
                       title: "Notificaciones",
-                      subtitle: "Ajustar sus Notificaciones"),
+                      subtitle: "Ajustar sus Notificaciones",
+                      onTap: _toggleNotifications), // Callback para gestionar el estado de las notificaciones
                   const TSettingMenu(
                       icon: Iconsax.security_card,
                       title: "Privacidad de la Cuenta",

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newapp/common/widgets.login_signup/loaders/loaders.dart';
-import 'package:newapp/data/repositories.authentication/authentication_repository.dart';
-import 'package:newapp/data/repositories.authentication/user/user_repository.dart';
 import 'package:newapp/features/authentication/screens/signup.widgets/verify_email.dart';
 import 'package:newapp/utils/constants/image_strings.dart';
 
 import '../../../../common/widgets.login_signup/connection/network_manager.dart';
+import '../../../../data/repositories/authentication/authentication_repository.dart';
+import '../../../../data/repositories/user/user_repository.dart';
 import '../../../../utils/popups/fullscreen_loader.dart';
 import '../../../personalization/models/user_model.dart';
 
@@ -29,7 +29,7 @@ class SignupController extends GetxController {
     try {
       ///Start Loading
       TFullScreenLoader.openLoadingDialog(
-          'Estamos procesando tu informacion', TImages.verifyIllustration);
+          'Estamos procesando tu informacion', TImages.waiting);
 
       /// Check Internet Conectivity
       final isConnected = await NetworkManager.instance.isConnected();

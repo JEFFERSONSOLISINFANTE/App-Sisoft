@@ -2,7 +2,7 @@ class TValidator {
 
   static String? validateEmptyText(String? fieldName, String? value){
     if (value == null || value.isEmpty){
-      return '$fieldName se necesita.';
+      return 'se necesita $fieldName.';
     }
     return null;
   }
@@ -25,7 +25,7 @@ class TValidator {
 
   static String? validatePassword(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Debe ingresar la contraseña.';
+      return 'Debe ingresar una contraseña.';
     }
 
     // Check for minimum password length
@@ -50,7 +50,7 @@ class TValidator {
 
   static String? validatePhoneNumber(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Phone number is required.';
+      return 'Se necesita un número de teléfono';
     }
     final phoneRegExp = RegExp(r'^\d{9}$');
 

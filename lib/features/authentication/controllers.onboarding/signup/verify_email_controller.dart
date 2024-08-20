@@ -7,7 +7,8 @@ import 'package:newapp/common/widgets.login_signup/success_screen/success_screen
 import 'package:newapp/utils/constants/image_strings.dart';
 import 'package:newapp/utils/constants/text_strings.dart';
 
-import '../../../../data/repositories.authentication/authentication_repository.dart';
+import '../../../../data/repositories/authentication/authentication_repository.dart';
+
 
 class VerifyEmailController extends GetxController {
   static VerifyEmailController get instance => Get.find();
@@ -43,7 +44,7 @@ class VerifyEmailController extends GetxController {
           timer.cancel();
           Get.off(
             () => SuccessScreen(
-              image: TImages.verifyIllustration,
+              image: TImages.success,
               title: TTexts.yourAccountCreatedTitle,
               subtitle: TTexts.yourAccountCreatedSubTitle,
               onPressed: () =>

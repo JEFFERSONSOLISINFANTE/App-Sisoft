@@ -32,7 +32,7 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(height: TSizes.spaceBtwSections),
 
                   ///Barra de Busqueda
-                  TSearchContainer(text: 'Buscar'),
+                  TSearchContainer(text: ''),
                   SizedBox(height: TSizes.spaceBtwSections),
 
                   ///Categorias
@@ -42,9 +42,9 @@ class HomeScreen extends StatelessWidget {
                       children: [
                         ///Titulo
                         TSectionHeading(
-                            title: 'Categorias Populares',
-                            showActionButton: false,
-                            textColor: TColors.white,),
+                          title: 'Categorias Populares',
+                          showActionButton: false,
+                          textColor: TColors.white,),
                         SizedBox(height: TSizes.spaceBtwItems),
 
                         ///Categorias
@@ -55,7 +55,6 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(height: TSizes.spaceBtwSections)
                 ],
               ),
-
             ),
 
             ///Cuerpo del home

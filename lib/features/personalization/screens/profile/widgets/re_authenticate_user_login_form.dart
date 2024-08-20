@@ -15,7 +15,7 @@ class ReAuthLoginForm extends StatelessWidget {
     final controller = UserController.instance;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Re-Authenticate User')),
+      appBar: AppBar(title: const Text('Comprobar usuario')),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(TSizes.defaultSpace),
@@ -41,14 +41,14 @@ class ReAuthLoginForm extends StatelessWidget {
                     obscureText: controller.hidePassword.value,
                     controller: controller.verifyPassword,
                     validator: (value) =>
-                        TValidator.validateEmptyText('Password', value),
+                        TValidator.validateEmptyText('Contraseña', value),
                     decoration: InputDecoration(
                       labelText: TTexts.password,
                       prefixIcon: const Icon(Iconsax.password_check),
                       suffixIcon: IconButton(
                         onPressed: () => controller.hidePassword.value =
-                            !controller.hidePassword.value,
-                        icon: const Icon(Iconsax.eye_slash),
+                        !controller.hidePassword.value,
+                        icon: Icon(controller.hidePassword.value ? Iconsax.eye_slash : Iconsax.eye),
                       ),
                     ),
                   ),

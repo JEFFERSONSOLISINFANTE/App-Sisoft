@@ -43,7 +43,7 @@ class TProductCardVertical extends StatelessWidget {
                 children: [
                   ///imagenes de productos
                   const TRoundedImage(
-                      imageUrl: TImages.banner3, applyImageRadius: true),
+                      imageUrl: TImages.pc, applyImageRadius: true),
 
                   /// Descuento
                   Positioned(
@@ -79,9 +79,9 @@ class TProductCardVertical extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   TProductTitleText(
-                      title: 'Green Nike Air Shoes', smallSize: true),
+                      title: 'Pc AMD Ryzen 5700g 16gb RAM RTX3090', smallSize: true),
                   SizedBox(height: TSizes.spaceBtwItems / 2),
-                  TBrandTitleTextWithVerifiedIcon(title: 'Nike')
+                  TBrandTitleTextWithVerifiedIcon(title: 'AMD')
                 ],
               ),
             ),

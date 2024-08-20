@@ -19,7 +19,7 @@ class TCardItem extends StatelessWidget {
       children: [
         ///Imagen
         TRoundedImage(
-            imageUrl: TImages.google,
+            imageUrl: TImages.pc,
             width: 60,
             height: 60,
             padding: const EdgeInsets.all(TSizes.sm),
@@ -29,27 +29,29 @@ class TCardItem extends StatelessWidget {
         const SizedBox(width: TSizes.spaceBtwSections),
 
         ///Titulo, precio y tamaño
-        Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const TBrandTitleTextWithVerifiedIcon(title: 'Amd'),
-            const Flexible(
-                child: TProductTitleText(title: "Pc negra y fea", maxLines: 1)),
+        Expanded(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const TBrandTitleTextWithVerifiedIcon(title: 'AMD'),
+              const Flexible(
+                  child: TProductTitleText(title: "Pc Amd Ryzen 5700g 16gb RAM RTX3090", maxLines: 1)),
 
-            ///Atributos
-            Text.rich(TextSpan(children: [
-              TextSpan(
-                  text: 'Color ', style: Theme.of(context).textTheme.bodySmall),
-              TextSpan(
-                  text: 'Green ', style: Theme.of(context).textTheme.bodyLarge),
-              TextSpan(
-                  text: 'Size ', style: Theme.of(context).textTheme.bodySmall),
-              TextSpan(
-                  text: 'EUR 38 ',
-                  style: Theme.of(context).textTheme.bodyLarge),
-            ]))
-          ],
+              ///Atributos
+              Text.rich(TextSpan(children: [
+                TextSpan(
+                    text: 'Color ', style: Theme.of(context).textTheme.bodySmall),
+                TextSpan(
+                    text: 'Green ', style: Theme.of(context).textTheme.bodyLarge),
+                TextSpan(
+                    text: 'Size ', style: Theme.of(context).textTheme.bodySmall),
+                TextSpan(
+                    text: 'EUR 38 ',
+                    style: Theme.of(context).textTheme.bodyLarge),
+              ]))
+            ],
+          ),
         )
       ],
     );

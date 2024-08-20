@@ -43,12 +43,12 @@ class TSingleAddress extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("John Doe",
+              Text("jefferson solis",
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: Theme.of(context).textTheme.titleLarge),
               const SizedBox(height: TSizes.sm / 2),
-              const Text("(+51) 977 745 079", maxLines: 1, overflow: TextOverflow.ellipsis),
+              const Text("977 745 079", maxLines: 1, overflow: TextOverflow.ellipsis),
               const SizedBox(height: TSizes.sm / 2),
               const Text("213 Av. Cutervo, Manzanilla, 11001, Ica, Ica, Ica, Peru", softWrap: true),
 

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 import '../../../../common/widgets.login_signup/connection/network_manager.dart';
 import '../../../../common/widgets.login_signup/loaders/loaders.dart';
-import '../../../../data/repositories.authentication/authentication_repository.dart';
+import '../../../../data/repositories/authentication/authentication_repository.dart';
 import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/popups/fullscreen_loader.dart';
 import '../../screens/password_configuration/reset_password.dart';
@@ -20,7 +20,7 @@ class ForgetPasswordController extends GetxController {
     try {
       ///Iniciando
       TFullScreenLoader.openLoadingDialog(
-          'Procesando tu solicitud...', TImages.verifyIllustration);
+          'Procesando tu solicitud...', TImages.waiting);
 
       ///Verificando conexion
       final isConnected = await NetworkManager.instance.isConnected();
@@ -59,7 +59,7 @@ class ForgetPasswordController extends GetxController {
     try {
       ///Iniciando
       TFullScreenLoader.openLoadingDialog(
-          'Procesando tu solicitud...', TImages.verifyIllustration);
+          'Procesando tu solicitud...', TImages.waiting);
 
       ///Verificando conexion
       final isConnected = await NetworkManager.instance.isConnected();

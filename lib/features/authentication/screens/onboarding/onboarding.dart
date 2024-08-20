@@ -25,7 +25,7 @@ class OnBoardingScreen extends StatelessWidget {
             children: const [
               OnBoardingPage(
                 image: TImages.onBoardingImage1,
-                title: TTexts.onBoardingTitle,
+                title: TTexts.onBoardingTitle1,
                 subTitle: TTexts.onBoardingSubTitle1,
               ),
               OnBoardingPage(

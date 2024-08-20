@@ -5,7 +5,7 @@ import 'package:newapp/features/authentication/controllers.onboarding/signup/sig
 import 'package:newapp/utils/validators/validation.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/constants/text_strings.dart';
-import '../login/widgets/TermsAndConditions.dart';
+import '../login/widgets/terms_and_conditions.dart';
 
 class TSignupForm extends StatelessWidget {
   const TSignupForm({

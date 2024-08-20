@@ -33,7 +33,7 @@ class TProductImageSlider extends StatelessWidget {
                   padding:
                   EdgeInsets.all(TSizes.productImageRadius * 2),
                   child: Center(
-                      child: Image(image: AssetImage(TImages.pcIcon))),
+                      child: Image(image: AssetImage(TImages.pc))),
                 )),
 
             /// Slider
@@ -56,7 +56,7 @@ class TProductImageSlider extends StatelessWidget {
                       dark ? TColors.dark : TColors.white,
                       border: Border.all(color: TColors.primary),
                       padding: const EdgeInsets.all(TSizes.sm),
-                      imageUrl: TImages.laptopIcon),
+                      imageUrl: TImages.laptop),
                 ),
               ),
             ),
